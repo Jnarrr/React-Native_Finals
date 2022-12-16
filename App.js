@@ -1,12 +1,59 @@
 import React from 'react';
 import { View, Text, Button, Image } from 'react-native';
-//import { NavigationContainer, TabActions } from '@react-navigation/native';
-//import { createNativeStackNavigator } from '@react-navigation/native-stack';
-//import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from './screens/Home';
+import ProductsScreen from './screens/Products';
+import ProductDetailsScreen from './screens/ProductDetails';
+
+const Stack = createNativeStackNavigator();
 
 const aquaApp = () => {
   return (
-    <Text>Test</Text>
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerTitleAlign: 'center' }}>
+        <Stack.Screen
+          name="Home"
+          component={ HomeScreen }
+          options={{ 
+            title: 'Home', 
+            headerRight: () => (
+              <Button
+              onPress={() => alert('This is a button!')}
+              title="Info"
+              color="#000"></Button>),
+            headerShown: false
+          }}
+          
+        />
+        <Stack.Screen
+          name="Products"
+          component={ ProductsScreen }
+          options={{ 
+            title: 'Products', 
+            headerRight: () => (
+              <Button
+              onPress={() => alert('This is a button!')}
+              title="Info"
+              color="#000"></Button>)
+          }}
+          
+        />
+        <Stack.Screen
+          name="ProductDetails"
+          component={ ProductDetailsScreen }
+          options={{ 
+            title: 'Product Details', 
+            headerRight: () => (
+              <Button
+              onPress={() => alert('This is a button!')}
+              title="Info"
+              color="#000"></Button>)
+          }}
+          
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
