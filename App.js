@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './screens/Home';
 import ProductsScreen from './screens/Products';
 import ProductDetailsScreen from './screens/ProductDetails';
+import AddProductScreen from './screens/AddProduct';
 
 const Stack = createNativeStackNavigator();
 
@@ -49,6 +50,14 @@ const aquaApp = () => {
               onPress={() => alert('This is a button!')}
               title="Info"
               color="#000"></Button>)
+          }}
+          
+        />
+        <Stack.Screen
+          name="AddProduct"
+          component={ AddProductScreen }
+          options={{ 
+            title: 'Add Product'
           }}
           
         />
