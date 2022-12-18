@@ -87,11 +87,6 @@ const AddProductScreen = ( {navigation} ) => {
         });
     }
 
-
-    useEffect(() => {
-        createTable();
-    }, []); 
-
     return(
         <View>
             <TextInput 
@@ -114,12 +109,14 @@ const AddProductScreen = ( {navigation} ) => {
             placeholder='Enter Size'
             placeholderTextColor= 'gray'
             maxLength={30} 
+            keyboardType='numeric'
             />
             <TextInput 
             style = { styles.input }
             onChangeText = { (text) => [setPrice(text)] }
             placeholder='Enter Price'
             placeholderTextColor= 'gray'
+            keyboardType='numeric'
             maxLength={30} 
             />
             <TextInput 

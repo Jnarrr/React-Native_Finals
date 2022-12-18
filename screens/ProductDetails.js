@@ -14,27 +14,6 @@ const ProductDetailsScreen = ( {navigation, route} ) => {
     const [size, setSize] = useState(route.params.item.size);
     const [price, setPrice] = useState(route.params.item.price);
     const [description, setDescription] = useState(route.params.item.description);
-    const [products, setProducts] = useState([]);
-
-    updateItem = () => {
-        if(!productname) {
-          alert('Please enter Product Name')
-          return false;
-        }
-    
-        db.transaction(txn => {
-          txn.executeSql(
-            'UPDATE products SET productname = ?, color = ?, size = ?, price = ?, description = ? WHERE id = ?',
-            [productname, color, size, price, description, id],
-            (sqlTxn, res) => {
-              navigation.goBack();
-            },
-            error => {
-              console.log("may error: " + error.message)
-            }
-          );
-        });
-    }
 
     deleteItem = () => {
         db.transaction(txn => {
@@ -62,52 +41,16 @@ const ProductDetailsScreen = ( {navigation, route} ) => {
             <Text>{price}</Text>
             <Text>{description}</Text>
 
-            <TextInput 
-            style = { styles.input }
-            onChangeText = { (text) => [setProductname(text)] }
-            placeholder='Enter Product Name'
-            placeholderTextColor= 'gray'
-            maxLength={30} 
-            defaultValue = {route.params.item.productname}
-            />
-            <TextInput 
-            style = { styles.input }
-            onChangeText = { (text) => [setColor(text)] }
-            placeholder='Enter Color'
-            placeholderTextColor= 'gray'
-            maxLength={30} 
-            defaultValue = {route.params.item.color}
-            />
-            <TextInput 
-            style = { styles.input }
-            onChangeText = { (text) => [setSize(text)] }
-            placeholder='Enter Size'
-            placeholderTextColor= 'gray'
-            maxLength={30} 
-            defaultValue = {route.params.item.size}
-            />
-            <TextInput 
-            style = { styles.input }
-            onChangeText = { (text) => [setPrice(text)] }
-            placeholder='Enter Price'
-            placeholderTextColor= 'gray'
-            maxLength={30} 
-            defaultValue = {route.params.item.price}
-            />
-            <TextInput 
-            style = { styles.input }
-            onChangeText = { (text) => [setDescription(text)] }
-            placeholder='Enter Description'
-            placeholderTextColor= 'gray'
-            maxLength={30} 
-            defaultValue = {route.params.item.description}
-            />
-
-            <Button
-                title="Save"
-                color="darkorange" 
-                onPress={ () => { updateItem() }}
-            />
+            <TouchableOpacity onPress={() => { navigation.navigate('EditProduct', {
+                key:id, 
+                productname:productname, 
+                color:color,
+                size:size,
+                price:price,
+                description:description
+                } ); }}>
+                <Text style={{ color: 'black' }}>Edit</Text>
+            </TouchableOpacity>
             <Button
                 title="Delete"
                 color="darkred" 

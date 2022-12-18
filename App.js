@@ -6,6 +6,7 @@ import HomeScreen from './screens/Home';
 import ProductsScreen from './screens/Products';
 import ProductDetailsScreen from './screens/ProductDetails';
 import AddProductScreen from './screens/AddProduct';
+import EditProductScreen from './screens/EditProduct';
 
 const Stack = createNativeStackNavigator();
 
@@ -58,6 +59,14 @@ const aquaApp = () => {
           component={ AddProductScreen }
           options={{ 
             title: 'Add Product'
+          }}
+          
+        />
+        <Stack.Screen
+          name="EditProduct"
+          component={ EditProductScreen }
+          options={{ 
+            title: 'Edit Product'
           }}
           
         />

@@ -104,6 +104,7 @@ const ProductsScreen = ( {navigation} ) => {
       createTable();
       if(isFocused){ 
         getProducts();
+        setSearch('');
       }
     }, [isFocused]); 
 
@@ -120,9 +121,11 @@ const ProductsScreen = ( {navigation} ) => {
             <FlatList 
             data={ products }
             renderItem = {({ item }) => (
+              <View>
                 <TouchableOpacity onPress={() => { navigation.navigate('ProductDetails', {item:item} ); }}>
-                <Text style={{ color: 'black' }}>{ item.productname }</Text>
+                  <Text style={{ color: 'black' }}>{ item.productname }</Text>
                 </TouchableOpacity>
+              </View>
             )}
             />
             <TouchableOpacity style = {styles.addButton} onPress={() => { navigation.navigate('AddProduct'); }}>
