@@ -15,22 +15,6 @@ const AddProductScreen = ( {navigation} ) => {
     const [description, setDescription] = useState('');
     const [products, setProducts] = useState([]);
 
-    const createTable = () => {
-        db.transaction(txn => {
-            txn.executeSql(
-              'CREATE TABLE IF NOT EXISTS products (id INTEGER PRIMARY KEY AUTOINCREMENT, productname VARCHAR(50), color VARCHAR(50), size VARCHAR(50), price VARCHAR(50), description VARCHAR(50))',
-              [],
-              (sqlTxn, res) => {
-                console.log("table created successfully");
-              },
-              error => {
-                console.log("error: " + error.message)
-              }
-            );
-    
-        });
-    }
-
     const getProducts = () => {
         db.transaction(txn => {
           txn.executeSql(
@@ -94,7 +78,7 @@ const AddProductScreen = ( {navigation} ) => {
                 setDescription('');
                 getProducts();
                 alert('Successfully saved item');
-                navigation.navigate('Products');
+                navigation.goBack();
             },
             error => {
               console.log("may error: " + error.message)
