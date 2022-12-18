@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, Button, Text, ScrollView, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator, FlatList} from 'react-native';
+import {View, Button, Text, ScrollView, Image, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator, FlatList} from 'react-native';
 import { openDatabase } from "react-native-sqlite-storage";
 import { useIsFocused } from "@react-navigation/native";
 
@@ -109,8 +109,7 @@ const ProductsScreen = ( {navigation} ) => {
     }, [isFocused]); 
 
     return(
-        <View>
-            <Text>Products Screen</Text>
+        <View style = {{ flex: 1, padding: 30 }}>
             <TextInput 
               style = {styles.input} 
               placeholder = 'Search name of a Product' 
@@ -118,6 +117,8 @@ const ProductsScreen = ( {navigation} ) => {
               value = {search}
               onChangeText = { (text) => searchFilter(text) }
             />
+            <Image source = { require('../images/search.png')} style = {styles.icon}/>
+
             <FlatList 
             data={ products }
             renderItem = {({ item }) => (
@@ -143,7 +144,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     right: 30,
-    bottom: -50,
+    bottom: 50,
     backgroundColor: '#15D005',
     borderRadius: 50,
     },
@@ -156,6 +157,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
     textAlign:'center',
     color: 'black',
+    },
+    icon: {
+    width:20,
+    height:20,
+    marginLeft: 30,
+    marginTop: -30
     },
 })
 
