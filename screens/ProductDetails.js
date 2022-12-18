@@ -40,6 +40,9 @@ const ProductDetailsScreen = ( {navigation, route} ) => {
             <Text>{size}</Text>
             <Text>{price}</Text>
             <Text>{description}</Text>
+            <View style = {{ width: 100, height: 100, backgroundColor: color }}>
+
+            </View>
 
             <TouchableOpacity onPress={() => { navigation.navigate('EditProduct', {
                 key:id, 

@@ -123,7 +123,7 @@ const ProductsScreen = ( {navigation} ) => {
             renderItem = {({ item }) => (
               <View>
                 <TouchableOpacity onPress={() => { navigation.navigate('ProductDetails', {item:item} ); }}>
-                  <Text style={{ color: 'black' }}>{ item.productname }</Text>
+                  <Text style={{ color: item.color }}>{ item.productname }</Text>
                 </TouchableOpacity>
               </View>
             )}
