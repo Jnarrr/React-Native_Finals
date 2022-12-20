@@ -49,7 +49,8 @@ const aquaApp = () => {
           name="AddProduct"
           component={ AddProductScreen }
           options={{ 
-            title: 'Add AquaFlask'
+            title: 'Add AquaFlask',
+            headerShown: false
           }}
           
         />
@@ -57,7 +58,8 @@ const aquaApp = () => {
           name="EditProduct"
           component={ EditProductScreen }
           options={{ 
-            title: 'Edit AquaFlask'
+            title: 'Edit AquaFlask',
+            headerShown: false
           }}
           
         />
