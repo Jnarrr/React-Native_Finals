@@ -7,7 +7,7 @@ const HomeScreen = ( {navigation} ) => {
             <Image source = { require('../images/wave.png')} style = {styles.wave} />
             <Image source = { require('../images/Aquaflask-Logo.png')} style = {styles.logo} />
             <Text style = {styles.signature}>#SayYassToAquaFlask</Text>
-            <TouchableOpacity style = {styles.btn} onPress={ () => navigation.navigate('Products')}>
+            <TouchableOpacity activeOpacity={.50} style = {styles.btn} onPress={ () => navigation.navigate('Products')}>
                 <Text style = { styles.btnText }>See all Products</Text>
             </TouchableOpacity>
         </View>

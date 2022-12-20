@@ -76,7 +76,7 @@ const EditProductScreen = ( {navigation, route} ) => {
             onChangeText = { (text) => [setDescription(text)] }
             placeholder='Enter Description'
             placeholderTextColor= 'gray'
-            maxLength={30} 
+            maxLength={150} 
             defaultValue = {route.params.description}
             />
             <TouchableOpacity style = {styles.btn} onPress={ updateItem }>

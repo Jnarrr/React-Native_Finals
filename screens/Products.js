@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, Button, Text, ScrollView, Image, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator, FlatList} from 'react-native';
+import {View, Button, Text, ScrollView, Image, TextInput, Dimensions, TouchableOpacity, StyleSheet, ActivityIndicator, FlatList} from 'react-native';
 import { openDatabase } from "react-native-sqlite-storage";
 import { useIsFocused } from "@react-navigation/native";
 
@@ -100,6 +100,8 @@ const ProductsScreen = ( {navigation} ) => {
       }
     }
 
+    const colNum = 2;
+
     useEffect(() => {
       createTable();
       if(isFocused){ 
@@ -109,7 +111,7 @@ const ProductsScreen = ( {navigation} ) => {
     }, [isFocused]); 
 
     return(
-        <View style = {{ flex: 1, padding: 30 }}>
+        <View style = {{ padding: 30 }}>
             <TextInput 
               style = {styles.input} 
               placeholder = 'Search name of a Product' 
@@ -120,14 +122,25 @@ const ProductsScreen = ( {navigation} ) => {
             <Image source = { require('../images/search.png')} style = {styles.icon}/>
 
             <FlatList 
+            style = {{ height: 480, marginTop: 20 }}
             data={ products }
             renderItem = {({ item }) => (
-              <View>
-                <TouchableOpacity onPress={() => { navigation.navigate('ProductDetails', {item:item} ); }}>
-                  <Text style={{ color: item.color }}>{ item.productname }</Text>
-                </TouchableOpacity>
-              </View>
+              <TouchableOpacity activeOpacity={.50} style = {{ 
+              backgroundColor: item.color,
+              padding: 10,
+              marginVertical: 8,
+              borderRadius: 8,
+              height: 100,
+              width: Dimensions.get('window').width / 2,
+              margin: 5,
+              flex: 1,
+              }} onPress={() => { navigation.navigate('ProductDetails', {item:item} ); }}>
+                <Text style={styles.subItemText}>{item.productname}</Text>
+                <Text style={styles.price}>₱{item.price}</Text>
+                <Text style={styles.size}>{item.size}</Text>
+              </TouchableOpacity>
             )}
+            numColumns = {colNum}
             />
             <TouchableOpacity style = {styles.addButton} onPress={() => { navigation.navigate('AddProduct'); }}>
                 <Text style = {{ color: 'white' }}>+</Text>
@@ -144,9 +157,39 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     right: 30,
-    bottom: 50,
-    backgroundColor: '#15D005',
+    bottom: -50,
+    backgroundColor: 'purple',
     borderRadius: 50,
+    },
+    size:{
+    color: 'white',
+    fontSize: 14,
+    fontWeight: 'bold',
+    textAlign: 'right',
+    position: 'absolute',
+    bottom: 15,
+    left: 15
+    },
+    price:{
+    color: 'white',
+    fontSize: 14,
+    fontWeight: 'bold',
+    textAlign: 'right',
+    position: 'absolute',
+    bottom: 15,
+    right: 15
+    },
+    subItem:{
+    justifyContent: 'center', 
+    flexDirection: 'row',
+    marginTop: 12,
+    },
+    subItemText:{
+    color: 'white', 
+    textAlign: 'left', 
+    fontWeight: 'bold', 
+    fontSize: 14,
+    margin: 5
     },
     input: {
     padding: 2,

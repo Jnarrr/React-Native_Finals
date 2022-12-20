@@ -32,12 +32,7 @@ const aquaApp = () => {
           name="Products"
           component={ ProductsScreen }
           options={{ 
-            title: 'Products', 
-            headerRight: () => (
-              <Button
-              onPress={() => alert('This is a button!')}
-              title="Info"
-              color="#000"></Button>)
+            title: 'AquaFlasks'
           }}
           
         />
@@ -45,12 +40,8 @@ const aquaApp = () => {
           name="ProductDetails"
           component={ ProductDetailsScreen }
           options={{ 
-            title: 'Product Details', 
-            headerRight: () => (
-              <Button
-              onPress={() => alert('This is a button!')}
-              title="Info"
-              color="#000"></Button>)
+            title: 'AquaFlask Details',
+            headerShown: false
           }}
           
         />
@@ -58,7 +49,7 @@ const aquaApp = () => {
           name="AddProduct"
           component={ AddProductScreen }
           options={{ 
-            title: 'Add Product'
+            title: 'Add AquaFlask'
           }}
           
         />
@@ -66,7 +57,7 @@ const aquaApp = () => {
           name="EditProduct"
           component={ EditProductScreen }
           options={{ 
-            title: 'Edit Product'
+            title: 'Edit AquaFlask'
           }}
           
         />

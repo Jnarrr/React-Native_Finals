@@ -177,7 +177,7 @@ const AddProductScreen = ( {navigation} ) => {
     }
 
     return(
-        <View>
+        <View style = {{ flex: 1, padding: 30 }}>
             <TextInput 
             style = { styles.input }
             onChangeText = { (text) => [setProductname(text)] }
@@ -186,7 +186,7 @@ const AddProductScreen = ( {navigation} ) => {
             maxLength={30} 
             />
             <Dropdown
-            style={[styles.input, isFocusColor && { borderColor: 'green' }]}
+            style={[styles.input, isFocusColor && { borderColor: 'purple' }]}
             placeholderStyle={styles.placeholderStyle}
             selectedTextStyle={styles.selectedTextStyle}
             inputSearchStyle={styles.inputSearchStyle}
@@ -205,7 +205,7 @@ const AddProductScreen = ( {navigation} ) => {
             }}
             />
             <Dropdown
-            style={[styles.input, isFocusSize && { borderColor: 'green' }]}
+            style={[styles.input, isFocusSize && { borderColor: 'purple' }]}
             placeholderStyle={styles.placeholderStyle}
             selectedTextStyle={styles.selectedTextStyle}
             inputSearchStyle={styles.inputSearchStyle}
@@ -235,7 +235,7 @@ const AddProductScreen = ( {navigation} ) => {
             onChangeText = { (text) => [setDescription(text)] }
             placeholder='Enter Description'
             placeholderTextColor= 'gray'
-            maxLength={30} 
+            maxLength={150} 
             />
 
             <TouchableOpacity style = {styles.btn} onPress={ addProduct }>
@@ -265,12 +265,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     },
     btn:{
-    backgroundColor: 'orange',
+    backgroundColor: 'purple',
     width: 150,
     height: 35,
     borderRadius: 5,
     alignSelf: 'center',
-    marginBottom: 100
+    marginTop: 30
     },
     dropdown: {
     height: 50,
